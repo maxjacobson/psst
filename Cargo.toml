@@ -4,3 +4,9 @@ version = "0.1.0"
 authors = ["Max Jacobson <max@hardscrabble.net>"]
 
 [dependencies]
+failure = "~0.1"
+failure_derive = "~0.1"
+log = "~0.4"
+rprompt = "~1.0"
+toml = "~0.4"
+xdg = "~2.1"
