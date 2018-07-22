@@ -2,6 +2,11 @@
 name = "psst"
 version = "0.1.0"
 authors = ["Max Jacobson <max@hardscrabble.net>"]
+readme  = "README.md"
+description = "Library to be used in CLIs for storing secrets. It will prompt the user for input on the first invocation and remember it for later."
+license = "MIT"
+repository = "https://github.com/maxjacobson/psst"
+keywords = ["secrets", "cli"]
 
 [dependencies]
 failure = "~0.1"
