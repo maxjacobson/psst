@@ -72,7 +72,7 @@ impl PsstApplication {
 
     fn get_new_value_for(&self, key: &str) -> Result<String, Error> {
         debug!("Prompting for new value for {}", key);
-        let reply = rprompt::prompt_reply_stdout(&format!("Please provide a value for {}: ", key))?;
+        let reply = rprompt::prompt_reply(&format!("Please provide a value for {}: ", key))?;
 
         Ok(reply)
     }
