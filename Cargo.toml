@@ -12,7 +12,7 @@ keywords = ["secrets", "cli"]
 [dependencies]
 anyhow = "1.0.97"
 log = "~0.4"
-rprompt = "~2.0"
+rprompt = "~2.1"
 thiserror = "2.0.12"
 toml = "~0.7"
 xdg = "~2.4"
