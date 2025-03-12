@@ -1,7 +1,6 @@
-extern crate failure;
-#[macro_use]
-extern crate failure_derive;
+extern crate anyhow;
 extern crate rprompt;
+extern crate thiserror;
 extern crate toml;
 extern crate xdg;
 
@@ -11,13 +10,13 @@ extern crate log;
 use std::fs::File;
 use std::io::prelude::*;
 use std::path::Path;
+use thiserror::Error;
 
+use anyhow::Result;
 use std::fs::OpenOptions;
 
-use failure::Error;
-
-#[derive(Fail, Debug)]
-#[fail(display = "Expected {} to be a string, but it wasn't", key)]
+#[derive(Debug, Error)]
+#[error("Expected {key} to be a string, but it wasn't")]
 struct NotStringError {
     key: String,
 }
@@ -27,7 +26,7 @@ pub struct PsstApplication {
 }
 
 impl PsstApplication {
-    pub fn get(&self, key: &str) -> Result<String, Error> {
+    pub fn get(&self, key: &str) -> Result<String> {
         let path = self.xdg_dirs.place_data_file("psst.toml")?;
 
         if !Path::exists(&path) {
@@ -70,15 +69,15 @@ impl PsstApplication {
         Ok(new_value)
     }
 
-    fn get_new_value_for(&self, key: &str) -> Result<String, Error> {
+    fn get_new_value_for(&self, key: &str) -> Result<String> {
         debug!("Prompting for new value for {}", key);
-        let reply = rprompt::prompt_reply(&format!("Please provide a value for {}: ", key))?;
+        let reply = rprompt::prompt_reply(format!("Please provide a value for {}: ", key))?;
 
         Ok(reply)
     }
 }
 
-pub fn new(application: &str) -> Result<PsstApplication, Error> {
+pub fn new(application: &str) -> Result<PsstApplication> {
     let xdg_dirs = xdg::BaseDirectories::with_prefix(application)?;
 
     Ok(PsstApplication { xdg_dirs })
