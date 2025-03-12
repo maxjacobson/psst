@@ -1,7 +1,7 @@
 [package]
 name = "psst"
 edition = "2015"
-version = "0.1.2"
+version = "0.1.3"
 authors = ["Max Jacobson <max@hardscrabble.net>"]
 readme  = "README.md"
 description = "Library to be used in CLIs for storing secrets. It will prompt the user for input on the first invocation and remember it for later."
