@@ -1,5 +1,6 @@
 [package]
 name = "psst"
+edition = "2015"
 version = "0.1.2"
 authors = ["Max Jacobson <max@hardscrabble.net>"]
 readme  = "README.md"
@@ -9,9 +10,9 @@ repository = "https://github.com/maxjacobson/psst"
 keywords = ["secrets", "cli"]
 
 [dependencies]
-failure = "~0.1"
-failure_derive = "~0.1"
+anyhow = "1.0.97"
 log = "~0.4"
 rprompt = "~2.0"
+thiserror = "2.0.12"
 toml = "~0.7"
 xdg = "~2.4"
