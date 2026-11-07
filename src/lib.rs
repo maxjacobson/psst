@@ -78,7 +78,7 @@ impl PsstApplication {
 }
 
 pub fn new(application: &str) -> Result<PsstApplication> {
-    let xdg_dirs = xdg::BaseDirectories::with_prefix(application)?;
+    let xdg_dirs = xdg::BaseDirectories::with_prefix(application);
 
     Ok(PsstApplication { xdg_dirs })
 }
